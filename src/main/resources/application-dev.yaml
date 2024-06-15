@@ -4,6 +4,8 @@ server:
     context path: "/user/mgmt"
 
 spring:
+  application:
+    name: user
   mvc:
     path match:
       matching-strategy: ant-path-matcher
