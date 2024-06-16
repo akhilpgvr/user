@@ -1,18 +1,25 @@
 package com.managementidea.user.controller;
 
+import com.managementidea.user.model.Request.PersonnelInfoDTO;
+import com.managementidea.user.service.UserService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
 @RequestMapping("/signup")
 public class SignUpController {
 
-    @PostMapping
-    public String saveName(@RequestParam String name) {
-        return name;
+    @Autowired
+    private UserService userService;
+
+    @PostMapping("/personnel-info")
+    private ResponseEntity<Void> savePersonnelInfo(@RequestBody PersonnelInfoDTO request){
+
+        log.info("Save personnel info");
+        return new ResponseEntity<>(userService.savePersonnelInfo(request), HttpStatus.OK);
     }
 }

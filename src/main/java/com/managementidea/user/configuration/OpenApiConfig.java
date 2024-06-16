@@ -13,10 +13,10 @@ public class OpenApiConfig {
     @Bean
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
-                .info(new Info().title("My Spring Boot API")
-                        .description("Sample API for demonstrating OpenAPI integration")
+                .info(new Info().title("User Management Application")
+                        .description("API for demonstrating user management")
                         .version("v1.0")
-                        .contact(new Contact().name("Your Name").email("yourname@example.com"))
+                        .contact(new Contact().name("akhil").email("akhilpgvr@gmail.com"))
                         .license(new License().name("Apache 2.0").url("http://springdoc.org")));
     }
 }
