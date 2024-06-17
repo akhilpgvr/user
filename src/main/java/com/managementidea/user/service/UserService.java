@@ -3,9 +3,11 @@ package com.managementidea.user.service;
 import com.managementidea.user.exceptions.UserExistsException;
 import com.managementidea.user.exceptions.UserNameExistsException;
 import com.managementidea.user.exceptions.UserNotExistsException;
+import com.managementidea.user.model.backOffice.PersonnelInfo;
 import com.managementidea.user.model.entities.UserEntity;
 import com.managementidea.user.model.repo.UserRepo;
 import com.managementidea.user.model.request.PersonnelInfoDTO;
+import com.managementidea.user.utils.Helper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,7 +28,9 @@ public class UserService {
 
         log.info("save Personnel-info to entity");
         UserEntity user = new UserEntity();
-        user.setUserInfo(request);
+        PersonnelInfo personnelInfo = Helper.copyProperties(request, new PersonnelInfo());
+
+        user.setUserInfo(personnelInfo);
         userRepo.save(user);
         return null;
     }

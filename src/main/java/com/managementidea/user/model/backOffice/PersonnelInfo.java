@@ -1,4 +1,4 @@
-package com.managementidea.user.model.request;
+package com.managementidea.user.model.backOffice;
 
 import com.managementidea.user.model.enums.GenderEnum;
 import com.managementidea.user.model.enums.PrefCommunicaionEnum;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PersonnelInfoDTO {
+public class PersonnelInfo {
 
     private String firstName;
     private String lastName;
