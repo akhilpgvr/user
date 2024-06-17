@@ -1,4 +1,4 @@
-package com.managementidea.user.model.Request;
+package com.managementidea.user.model.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

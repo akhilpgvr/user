@@ -1,6 +1,6 @@
-package com.managementidea.user.model.Entity;
+package com.managementidea.user.model.entity;
 
-import com.managementidea.user.model.Request.PersonnelInfoDTO;
+import com.managementidea.user.model.request.PersonnelInfoDTO;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

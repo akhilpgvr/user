@@ -1,8 +1,10 @@
 package com.managementidea.user.service;
 
 import com.managementidea.user.exceptions.UserExistsException;
-import com.managementidea.user.model.Entity.UserEntity;
-import com.managementidea.user.model.Request.PersonnelInfoDTO;
+import com.managementidea.user.exceptions.UserNotExistsException;
+import com.managementidea.user.exceptions.UserNameExistsException;
+import com.managementidea.user.model.entity.UserEntity;
+import com.managementidea.user.model.request.PersonnelInfoDTO;
 import com.managementidea.user.model.repo.UserRepo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,5 +39,21 @@ public class UserService {
             log.error("user already exists by mobileNo or email");
             throw new UserExistsException("user already exists by mobileNo or email");
         }
+    }
+
+    public Void createUserName(String mobileNo, String userName) {
+
+        //perform username validation
+        log.info("checking user existence BY mobileNo: {}", mobileNo);
+        Optional<UserEntity> userRefByMob = userRepo.findByMobileNo(mobileNo);
+        if(userRefByMob.isEmpty()) throw new UserNotExistsException("User not exists for mobileNo: "+mobileNo);
+
+        log.info("checking username existence");
+        Optional<UserEntity> userRefByUserName = userRepo.findByUserName(userName);
+        if(userRefByUserName.isPresent()) throw new UserNameExistsException("UserName: "+userName+" already exists");
+
+        userRefByMob.get().setUserName(userName);
+        userRepo.save(userRefByMob.get());
+        return null;
     }
 }
