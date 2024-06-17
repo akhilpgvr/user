@@ -1,6 +1,6 @@
 package com.managementidea.user.model.repo;
 
-import com.managementidea.user.model.entity.UserEntity;
+import com.managementidea.user.model.entities.UserEntity;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;

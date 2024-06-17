@@ -1,5 +1,6 @@
-package com.managementidea.user.model.entity;
+package com.managementidea.user.model.entities;
 
+import com.managementidea.user.model.backOffice.PersonnelInfo;
 import com.managementidea.user.model.request.PersonnelInfoDTO;
 import lombok.*;
 import org.springframework.data.annotation.Id;
@@ -18,5 +19,5 @@ public class UserEntity {
 
     private String userName;
     private String password;
-    private PersonnelInfoDTO userInfo;
+    private PersonnelInfo userInfo;
 }

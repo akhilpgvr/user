@@ -1,11 +1,11 @@
 package com.managementidea.user.service;
 
 import com.managementidea.user.exceptions.UserExistsException;
-import com.managementidea.user.exceptions.UserNotExistsException;
 import com.managementidea.user.exceptions.UserNameExistsException;
-import com.managementidea.user.model.entity.UserEntity;
-import com.managementidea.user.model.request.PersonnelInfoDTO;
+import com.managementidea.user.exceptions.UserNotExistsException;
+import com.managementidea.user.model.entities.UserEntity;
 import com.managementidea.user.model.repo.UserRepo;
+import com.managementidea.user.model.request.PersonnelInfoDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,16 +44,27 @@ public class UserService {
     public Void createUserName(String mobileNo, String userName) {
 
         //perform username validation
-        log.info("checking user existence BY mobileNo: {}", mobileNo);
-        Optional<UserEntity> userRefByMob = userRepo.findByMobileNo(mobileNo);
-        if(userRefByMob.isEmpty()) throw new UserNotExistsException("User not exists for mobileNo: "+mobileNo);
-
+        UserEntity user = findByMobileNo(mobileNo);
         log.info("checking username existence");
         Optional<UserEntity> userRefByUserName = userRepo.findByUserName(userName);
         if(userRefByUserName.isPresent()) throw new UserNameExistsException("UserName: "+userName+" already exists");
 
-        userRefByMob.get().setUserName(userName);
-        userRepo.save(userRefByMob.get());
+        user.setUserName(userName);
+        userRepo.save(user);
         return null;
+    }
+
+    public UserEntity findByMobileNo(String mobileNo) {
+
+        log.info("checking user existence BY mobileNo: {}", mobileNo);
+        Optional<UserEntity> userRefByMob = userRepo.findByMobileNo(mobileNo);
+        if(userRefByMob.isPresent()) {
+            return userRefByMob.get();
+        }
+        else {
+            log.error("User not exists for mobileNo: {}",mobileNo);
+            throw new UserNotExistsException("User not exists for mobileNo: "+mobileNo);
+        }
+
     }
 }
