@@ -85,7 +85,7 @@ public class UserService {
 
         UserEntity user = findByMobileNo(request.getMobileNo());
         user.setPassword(password);
-
+        userRepo.save(user);
         return null;
     }
 }
