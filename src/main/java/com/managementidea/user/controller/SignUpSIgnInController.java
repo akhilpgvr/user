@@ -4,14 +4,12 @@ import com.managementidea.user.model.request.PasswordDTO;
 import com.managementidea.user.model.request.PersonnelInfoDTO;
 import com.managementidea.user.service.UserService;
 import io.swagger.annotations.ApiOperation;
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j
