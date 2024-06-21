@@ -1,7 +1,7 @@
 server:
   port: 9990
   servlet:
-    context path: "/user/mgmt"
+    context path: "/user/mgmt/v1"
 
 spring:
   application:
