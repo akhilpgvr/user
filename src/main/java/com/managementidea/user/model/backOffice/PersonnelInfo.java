@@ -2,6 +2,7 @@ package com.managementidea.user.model.backOffice;
 
 import com.managementidea.user.model.enums.GenderEnum;
 import com.managementidea.user.model.enums.PrefCommunicaionEnum;
+import com.managementidea.user.model.enums.UserTypeEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,6 +16,7 @@ public class PersonnelInfo {
     private String lastName;
     private String age;
     private GenderEnum gender;
+    private UserTypeEnum userType;
     private String mobCountryCode;
     private String mobileNo;
     private String email;
