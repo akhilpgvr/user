@@ -7,6 +7,7 @@ import com.managementidea.user.exceptions.UserNotExistsException;
 import com.managementidea.user.model.backOffice.PersonnelInfo;
 import com.managementidea.user.model.entities.UserEntity;
 import com.managementidea.user.model.enums.ProfileUpdateEnum;
+import com.managementidea.user.model.enums.UserTypeEnum;
 import com.managementidea.user.model.repo.UserRepo;
 import com.managementidea.user.model.request.PasswordDTO;
 import com.managementidea.user.model.request.PersonnelInfoDTO;
@@ -40,6 +41,19 @@ public class UserService {
             throw new UserNotExistsException("User not exists for mobileNo: "+mobileNo);
         }
 
+    }
+
+    public UserEntity findByMobileNoAndUserType(String mobileNo, UserTypeEnum userType) {
+
+        log.info("checking user existence BY mobileNo: {} and userType: {}", mobileNo, userType.name());
+        Optional<UserEntity> userRefByMob = userRepo.findByMobileNoAndUserType(mobileNo, userType);
+        if(userRefByMob.isPresent()) {
+            return userRefByMob.get();
+        }
+        else {
+            log.error("User not exists for mobileNo: {} and userType: {}", mobileNo, userType.name());
+            throw new UserNotExistsException("User not exists for mobileNo: "+mobileNo+ " and userType: "+userType.name());
+        }
     }
 
     public Void savePersonnelInfo(PersonnelInfoDTO request) {

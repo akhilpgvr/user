@@ -1,6 +1,7 @@
 package com.managementidea.user.service;
 
 import com.managementidea.user.model.entities.UserEntity;
+import com.managementidea.user.model.enums.UserTypeEnum;
 import com.managementidea.user.model.response.FindByMobileResponse;
 import com.managementidea.user.utils.Helper;
 import lombok.extern.slf4j.Slf4j;
@@ -14,10 +15,10 @@ public class InternalService {
     @Autowired
     private UserService userService;
 
-    public FindByMobileResponse findByMobileNo(String mobileNo) {
+    public FindByMobileResponse findByMobileNoAndUserType(String mobileNo, UserTypeEnum userType) {
 
         log.info("calling function to fetch using mobileNo");
-        UserEntity user = userService.findByMobileNo(mobileNo);
+        UserEntity user = userService.findByMobileNoAndUserType(mobileNo, userType);
         return Helper.copyProperties(user, new FindByMobileResponse());
     }
 }

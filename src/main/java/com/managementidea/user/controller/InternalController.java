@@ -1,5 +1,6 @@
 package com.managementidea.user.controller;
 
+import com.managementidea.user.model.enums.UserTypeEnum;
 import com.managementidea.user.model.response.FindByMobileResponse;
 import com.managementidea.user.service.InternalService;
 import lombok.extern.slf4j.Slf4j;
@@ -17,9 +18,9 @@ public class InternalController {
     private InternalService internalService;
 
     @GetMapping("find-by-mob/{mobileNo}")
-    public ResponseEntity<FindByMobileResponse> findByMobileNo(@PathVariable(name = "mobileNo") String mobileNo) {
+    public ResponseEntity<FindByMobileResponse> findByMobileNo(@PathVariable(name = "mobileNo") String mobileNo, @RequestParam UserTypeEnum userType) {
 
         log.info("search for user with mobileNo: {}", mobileNo);
-        return new ResponseEntity<>(internalService.findByMobileNo(mobileNo), HttpStatus.OK);
+        return new ResponseEntity<>(internalService.findByMobileNoAndUserType(mobileNo, userType), HttpStatus.OK);
     }
 }

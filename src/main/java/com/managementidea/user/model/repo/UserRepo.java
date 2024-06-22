@@ -1,6 +1,7 @@
 package com.managementidea.user.model.repo;
 
 import com.managementidea.user.model.entities.UserEntity;
+import com.managementidea.user.model.enums.UserTypeEnum;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -18,4 +19,6 @@ public interface UserRepo extends MongoRepository<UserEntity, String> {
 
     Optional<UserEntity> findByUserName(String userName);
 
+    @Query("{ $and: [ {'userInfo.mobileNo': ?0}, {'userInfo.userType': ?1} ] }")
+    Optional<UserEntity> findByMobileNoAndUserType(String mobileNo, UserTypeEnum userType);
 }
