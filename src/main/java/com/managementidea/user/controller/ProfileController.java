@@ -2,6 +2,7 @@ package com.managementidea.user.controller;
 
 import com.managementidea.user.model.request.UpdateProfileDTO;
 import com.managementidea.user.service.UserService;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +17,7 @@ public class ProfileController {
     @Autowired
     private UserService userService;
 
+    @Operation(summary = "Api to update the user details", description = "")
     @PutMapping("/update")
     public ResponseEntity<Void> updateProfile(@RequestParam String mobileNo, @RequestBody UpdateProfileDTO request) {
 

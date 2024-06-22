@@ -4,6 +4,7 @@ import com.managementidea.user.model.request.PasswordDTO;
 import com.managementidea.user.model.request.PersonnelInfoDTO;
 import com.managementidea.user.service.UserService;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,7 +19,7 @@ public class SignUpSIgnInController {
     @Autowired
     private UserService userService;
 
-    @ApiOperation(value = "This api is for entering Personnel information")
+    @Operation(summary = "This api is for entering Personnel information", description = "")
     @PostMapping("/personnel-info")
     private ResponseEntity<Void> savePersonnelInfo(@RequestBody PersonnelInfoDTO request) {
 
@@ -26,7 +27,7 @@ public class SignUpSIgnInController {
         return new ResponseEntity<>(userService.savePersonnelInfo(request), HttpStatus.OK);
     }
 
-    @ApiOperation(value = "This api is for entering username")
+    @Operation(summary = "This api is for entering username", description = "")
     @PostMapping("/username")
     public ResponseEntity<Void> createUserName(@RequestParam String mobileNo, @RequestParam String userName) {
 
@@ -34,7 +35,7 @@ public class SignUpSIgnInController {
         return new ResponseEntity<>(userService.createUserName(mobileNo, userName), HttpStatus.OK);
     }
 
-    @ApiOperation(value = "This api is for entering password")
+    @Operation(summary = "This api is for entering password", description = "")
     @PostMapping("/password")
     public ResponseEntity<Void> createPassword(@RequestBody PasswordDTO request) {
 
