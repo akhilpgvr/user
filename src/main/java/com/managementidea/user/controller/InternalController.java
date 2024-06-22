@@ -18,9 +18,9 @@ public class InternalController {
     private InternalService internalService;
 
     @GetMapping("find-by/mobnusertype/{mobileNo}")
-    public ResponseEntity<FindByMobileResponse> findByMobileNo(@PathVariable(name = "mobileNo") String mobileNo, @RequestParam UserTypeEnum userType) {
+    public ResponseEntity<FindByMobileResponse> findByMobileNoAndUserType(@PathVariable(name = "mobileNo") String mobileNo, @RequestParam UserTypeEnum userType) {
 
-        log.info("search for user with mobileNo: {}", mobileNo);
+        log.info("search for user with mobileNo: {} and userType: {}", mobileNo, userType);
         return new ResponseEntity<>(internalService.findByMobileNoAndUserType(mobileNo, userType), HttpStatus.OK);
     }
 }
