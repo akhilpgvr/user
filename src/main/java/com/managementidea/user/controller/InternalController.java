@@ -17,7 +17,7 @@ public class InternalController {
     @Autowired
     private InternalService internalService;
 
-    @GetMapping("find-by/mobnusertype/{mobileNo}")
+    @GetMapping("find-by/mobno-usertype/{mobileNo}")
     public ResponseEntity<FindByMobileResponse> findByMobileNoAndUserType(@PathVariable(name = "mobileNo") String mobileNo, @RequestParam UserTypeEnum userType) {
 
         log.info("search for user with mobileNo: {} and userType: {}", mobileNo, userType);
