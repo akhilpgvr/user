@@ -1,8 +1,8 @@
 package com.managementidea.user.model.request;
 
-import com.managementidea.user.model.enums.UserTypeEnum;
 import com.managementidea.user.model.enums.GenderEnum;
 import com.managementidea.user.model.enums.PrefCommunicaionEnum;
+import com.managementidea.user.model.enums.UserTypeEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
